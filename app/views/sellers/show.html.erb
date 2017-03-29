@@ -1,0 +1,26 @@
+<h1>Show food</h1>
+
+<div class="row">
+    
+    <div class="col-md-4">
+        <%= image_tag @seller.food_img.url(:seller_show), class: "food-show" %>
+    </div>
+    <div class="col-md-8">
+        <h2>Food: <%= @seller.food %></h2>
+        <h3>Location: <%= @seller.location %></h3>
+        <h3>Price: <%= @seller.price %></h3>
+        <h3>Date/Time: <%= @seller.date %></h3>
+        <h3>Contact Number: <%= @seller.mobile %></h3>
+        <p>Food Details: <%= @seller.details %></p>
+    </div>  
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <!-- ratings will go here -->
+    </div>
+</div>
+
+<%= link_to "Back", root_path %>
+<%= link_to "Edit", edit_seller_path(@seller) %>
+<%= link_to "Delete", seller_path(@seller), method: :delete, data: { confirm: "Are you sure?"} %>

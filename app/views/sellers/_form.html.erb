@@ -1,0 +1,11 @@
+<%= simple_form_for @seller do |f| %>
+    <%= f.input :food, label: "Food" %>
+    <%= f.input :location, label: "Location" %>
+    <%= f.input :price, label: "Price" %>
+    <%= f.input :date, label: "Date" %>
+    <%= f.input :mobile, label: "Phone" %>
+    <%= f.input :details, label: "Details" %>
+    <%= f.file_field :food_img %>
+    <%= f.button :submit %>
+
+<% end %>

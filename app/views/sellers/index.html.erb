@@ -1,0 +1,11 @@
+<h1>Food Information</h1>
+
+<% if @sellers.count == 0 %>
+    <h1> There are no food entries in this category</h1>
+<% else %>
+    <% @sellers.each do |seller| %>
+        <h2><%= link_to seller.food, seller_path(seller) %></h2>
+    <% end %>
+<% end %>
+
+<%= link_to "Add new seller", new_seller_path %>
