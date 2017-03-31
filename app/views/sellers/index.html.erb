@@ -3,9 +3,14 @@
 <% if @sellers.count == 0 %>
     <h1> There are no food entries in this category</h1>
 <% else %>
+    <div class="row">
     <% @sellers.each do |seller| %>
-        <h2><%= link_to seller.food, seller_path(seller) %></h2>
+        <div class="col-md-4">        
+            <a href="/sellers/<%= seller.id %>">
+                <%= image_tag seller.food_img.url(:thumb), class: "food" %>
+            </a>
+        </div>
     <% end %>
+    </div>
 <% end %>
 
-<%= link_to "Add new seller", new_seller_path %>

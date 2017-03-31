@@ -22,12 +22,20 @@
                     <li><%= link_to "Log in", new_user_session_path %></li>
                 <% end %>
             </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <% if user_signed_in? %>
+                    <li><%= link_to "Add new food", new_seller_path %></li>
+                <% end %>
+            </ul>
         </div>
       </nav>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
 
-      <%= yield %>
+       <div class="container">
+           <%= yield %>
+       </div>
 
   </body>
 </html>
