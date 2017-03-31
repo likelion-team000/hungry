@@ -1,0 +1,66 @@
+<!-- result.html.erb -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Search Result</title>
+	<style type="text/css">
+		#big {
+            background-image: url("/food.jpg");
+            height: 100%;
+            width: 100%;
+            overflow: auto;
+            position: fixed;
+        }
+
+        input[type=text] {
+            width: 130px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: white;
+            background-image: url('searchicon.png');
+            background-position: 10px 10px; 
+            background-repeat: no-repeat;
+            padding: 12px 20px 12px 40px;
+            width: 90%;
+        }
+	</style>
+</head>
+<body>
+    <div id="big" >
+    	<br>
+
+    	<!--Search Bar-->
+    	<div style="text-align: center;">
+            <form action="result" method="GET">
+                <input id="search_bar" type="text" name="search" placeholder="Search..">
+            </form>
+        </div>
+
+        <br>
+
+        <!--Show the search result-->
+        <div style="background-color: white;">
+            <% if @posts.blank? %>
+                <h4>No match result for "<%= @search %>".</h4>
+            <% else %>
+                <h4>Matching results for "<%= @search %>": </h4>
+                <br>
+                <% @posts.each do |p| %>
+                   <h4>Food: <%= p.food %></h4>
+                   <h4>Location: <%= p.location %></h4>
+                   <h4>Price: $<%= p.price %></h4>
+                   <h4>Date: <%= p.date %></h4>
+                   <h4>Mobile: <%= p.mobile %></h4>
+                   <h4>Details: <%= p.details %></h4>
+                   <!--<img src=p.picture alt="image of food">-->
+                   <br>
+                <% end %>
+            <% end %>
+        </div>
+    </div>
+</body>
+
+</html>

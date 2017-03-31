@@ -39,6 +39,26 @@ class SellersController < ApplicationController
         redirect_to root_path
     end
 
+    ## Parts I added
+    def main
+        # @posts = Seller.all
+        @search = params[:search]
+        if @search
+          @posts = Seller.search(@search).order("created_at DESC")
+        # else
+        #   @posts = Seller.all.order("created_at DESC")
+        end
+    end      
+
+    def result
+        @search = params[:search]
+        if @search
+          @posts = Seller.search(@search).order("created_at DESC")
+        end
+    end
+
+    ##  
+
 private
     def seller_params
         params.require(:seller).permit(:food, :location, :price, :date, :mobile, :details, :food_img)
