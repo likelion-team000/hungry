@@ -10,11 +10,11 @@ class SellersController < ApplicationController
     end
 
     def new
-        @seller = Seller.new
+        @seller = current_user.sellers.build
     end
 
     def create
-        @seller = Seller.new(seller_params)
+        @seller = current_user.sellers.build(seller_params)
 
         if @seller.save
             redirect_to root_path

@@ -1,0 +1,4 @@
+<%= simple_form_for([@seller, @seller.reviews.build]) do |f| %>
+    <%= f.input :rating %>
+    <%= f.button :submit %>
+<% end %>

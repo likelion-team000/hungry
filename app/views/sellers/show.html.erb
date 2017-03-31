@@ -1,26 +1,42 @@
-<h1>Show food</h1>
+<h1>Tell us more about your food!</h1>
 
 <div class="row">
     
     <div class="col-md-4">
-        <%= image_tag @seller.food_img.url(:seller_show), class: "food-show" %>
+
+        <%= image_tag @seller.food_img.url(:medium), class: "food-show" %>
+
     </div>
     <div class="col-md-8">
-        <h2>Food: <%= @seller.food %></h2>
+
+        <h2>What kind of food?: <%= @seller.food %></h2>
         <h3>Location: <%= @seller.location %></h3>
-        <h3>Price: <%= @seller.price %></h3>
-        <h3>Date/Time: <%= @seller.date %></h3>
+        <h3>Price($): <%= @seller.price %></h3>
+        <h3>Date/Time(MM-DD-YYYY/Time): <%= @seller.date %></h3>
         <h3>Contact Number: <%= @seller.mobile %></h3>
         <p>Food Details: <%= @seller.details %></p>
+
     </div>  
 </div>
 
+<% if false %>
 <div class="row">
     <div class="col-md-4">
-        <!-- ratings will go here -->
+        <%= render @seller.reviews %>
+        <div>
+            <%= link_to "Add rating", new_seller_review_path(@seller) %>
+        </div>
     </div>
+
 </div>
+<% end %>
 
 <%= link_to "Back", root_path %>
-<%= link_to "Edit", edit_seller_path(@seller) %>
-<%= link_to "Delete", seller_path(@seller), method: :delete, data: { confirm: "Are you sure?"} %>
+
+<% if user_signed_in? %>
+    <% if @seller.user_id == current_user.id %>
+        <%= link_to "Edit", edit_seller_path(@seller) %>
+        <%= link_to "Delete", seller_path(@seller), method: :delete, data: { confirm: "Are you sure?"} %>
+    <% end %>
+<% end %>
+
